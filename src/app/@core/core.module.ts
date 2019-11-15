@@ -4,13 +4,19 @@ import { NbAuthModule, NbDummyAuthStrategy } from '@nebular/auth';
 import { NbSecurityModule, NbRoleProvider } from '@nebular/security';
 import { of as observableOf } from 'rxjs';
 import { TemperatureHumidityData } from './data/temperature-humidity';
+import { ElectricityData } from './data/electricity';
 
 import { throwIfAlreadyLoaded } from './module-import-guard';
-import { AnalyticsService } from './utils';
+import { 
+  AnalyticsService,
+  LayoutService,
+}  from './utils';
 import { UserData } from './data/users';
 import { UserService } from './mock/users.service';
 import { MockDataModule } from './mock/mock-data.module';
 import { TemperatureHumidityService } from './mock/temperature-humidity.service';
+import { ElectricityService } from './mock/electricity.service';
+
 
 const socialLinks = [
   {
@@ -33,6 +39,7 @@ const socialLinks = [
 const DATA_SERVICES = [
   { provide: UserData, useClass: UserService },
   { provide: TemperatureHumidityData, useClass: TemperatureHumidityService },
+  { provide: ElectricityData, useClass: ElectricityService },
 ];
 
 export class NbSimpleRoleProvider extends NbRoleProvider {
@@ -81,6 +88,7 @@ export const NB_CORE_PROVIDERS = [
     provide: NbRoleProvider, useClass: NbSimpleRoleProvider,
   },
   AnalyticsService,
+  LayoutService,
 ];
 
 @NgModule({

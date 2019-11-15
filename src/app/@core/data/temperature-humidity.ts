@@ -1,5 +1,4 @@
 import { Observable } from 'rxjs';
-import { MqttService, IMqttMessage } from 'ngx-mqtt';
 
 export interface Temperature{
     value : number;
