@@ -9,6 +9,8 @@ import {
   NbSelectModule,
   NbListModule,
   NbIconModule,
+  NbCheckboxModule,
+  NbInputModule,
 } from '@nebular/theme';
 import { FormsModule } from '@angular/forms';
 import { NgxEchartsModule } from 'ngx-echarts';
@@ -19,6 +21,8 @@ import { TemperatureComponent } from './temperature/temperature.component';
 import { TemperatureDraggerComponent } from './temperature/temperature-dragger/temperature-dragger.component';
 import { ElectricityComponent } from './electricity/electricity.component';
 import { ElectricityChartComponent } from './electricity/electricity-chart/electricity-chart.component';
+import { PublishComponent } from './publish/publish.component';
+
 
 @NgModule({
   imports: [
@@ -31,10 +35,12 @@ import { ElectricityChartComponent } from './electricity/electricity-chart/elect
     NbActionsModule,
     NbRadioModule,
     NbSelectModule,
+    NbCheckboxModule,
     NbListModule,
     NbIconModule,
     NbButtonModule,
     NgxEchartsModule,
+    NbInputModule,
    
   ],
   declarations: [
@@ -43,6 +49,7 @@ import { ElectricityChartComponent } from './electricity/electricity-chart/elect
     TemperatureDraggerComponent,
     ElectricityComponent,
     ElectricityChartComponent,
+    PublishComponent,
   ],
 })
 export class DashboardModule { }

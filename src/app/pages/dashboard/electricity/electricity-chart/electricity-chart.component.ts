@@ -13,7 +13,7 @@ import { ElectricityChart } from '../../../../@core/data/electricity';
        class="echart"
        (chartInit)="onChartInit($event)">
   </div>
-`, //check this line tomorrow
+`, 
 })
 export class ElectricityChartComponent implements AfterViewInit, OnDestroy {
 
