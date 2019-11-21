@@ -24,6 +24,7 @@ import { ElectricityChartComponent } from './electricity/electricity-chart/elect
 import { PublishComponent } from './publish/publish.component';
 
 
+
 @NgModule({
   imports: [
     FormsModule,
@@ -50,6 +51,7 @@ import { PublishComponent } from './publish/publish.component';
     ElectricityComponent,
     ElectricityChartComponent,
     PublishComponent,
+   
   ],
 })
 export class DashboardModule { }

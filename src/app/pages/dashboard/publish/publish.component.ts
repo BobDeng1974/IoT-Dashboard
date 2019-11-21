@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MqttService } from 'ngx-mqtt';
 
 @Component({
   selector: 'ngx-publish',
@@ -7,11 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PublishComponent implements OnInit {
 
-  starRate = 2;
-  heartRate = 4;
-  radioGroupValue = 'This is value 2';
+    message : string =" ";
+    topic : string =" ";
   
-  constructor() { }
+  constructor(private mqttService: MqttService) { 
+      console.log(this.mqttService);
+  }
+
+  public publish(topic:string, message:string)
+  {
+      this.mqttService.unsafePublish(topic, message, {qos: 1, retain: true});
+  }
 
   ngOnInit() {
   }

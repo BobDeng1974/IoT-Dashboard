@@ -4,6 +4,7 @@
  * Licensed under the MIT License. See License.txt in the project root for license information.
  */
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -41,6 +42,7 @@ export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    FormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
