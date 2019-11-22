@@ -11,6 +11,7 @@ export class PublishComponent implements OnInit {
     message : string =" ";
     topic : string =" ";
     checked = false;
+    QoS: any = "";
   
   constructor(private mqttService: MqttService) { 
       console.log(this.mqttService);
@@ -18,11 +19,12 @@ export class PublishComponent implements OnInit {
   
   toggle(checked: boolean){
       this.checked = checked;
-  }
+  } 
+  
 
   public publish(topic:string, message:string)
   {
-      this.mqttService.unsafePublish(topic, message, {qos: 1, retain: this.checked});
+      this.mqttService.unsafePublish(topic, message, {qos: this.QoS, retain: this.checked});
   }
 
   
