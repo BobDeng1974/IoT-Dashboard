@@ -8,6 +8,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     home: true,
   },
   {
+    title: 'Cloud MQTT Setting',
+    icon: 'cloud-upload-outline',
+    link:'/pages/cloud',
+  },
+  {
     title: 'FEATURES',
     group: true,
   },
@@ -27,10 +32,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
         title: 'Request Password',
         link: '/auth/request-password',
       },
-      {
-        title: 'Reset Password',
-        link: '/auth/reset-password',
-      },
+      
     ],
   },
 ];

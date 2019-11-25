@@ -17,6 +17,11 @@ const routes: Routes = [{
       redirectTo: 'dashboard',
       pathMatch: 'full',
     },
+    {
+      path: 'cloud-setting',
+      loadChildren: () => import('./cloud/cloud.component')
+        .then(m => m.CloudComponent),
+    },
   ],
 }];
 
