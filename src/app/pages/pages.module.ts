@@ -6,7 +6,7 @@ import { PagesComponent } from './pages.component';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { PagesRoutingModule } from './pages-routing.module';
 import { FormsModule } from '@angular/forms';
-import { CloudModule } from './cloud/cloud.module';
+import { SettingModule } from './setting/setting.module';
 
 
 @NgModule({
@@ -16,7 +16,7 @@ import { CloudModule } from './cloud/cloud.module';
     NbMenuModule,
     DashboardModule,
     FormsModule,
-    // CloudModule,
+    //SettingModule,
   ],
   declarations: [
     PagesComponent,

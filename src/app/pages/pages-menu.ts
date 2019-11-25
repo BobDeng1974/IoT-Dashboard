@@ -8,9 +8,15 @@ export const MENU_ITEMS: NbMenuItem[] = [
     home: true,
   },
   {
+  title: 'Setting',
+  icon: 'monitor-outline',
+   children:[
+  {
     title: 'Cloud MQTT Setting',
     icon: 'cloud-upload-outline',
     link:'/pages/cloud',
+  },
+],
   },
   {
     title: 'FEATURES',
