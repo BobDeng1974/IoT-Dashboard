@@ -14,7 +14,7 @@ export class PublishComponent implements OnInit {
     QoS: any = "";
   
   constructor(private mqttService: MqttService) { 
-      console.log(this.mqttService);
+      
   }
   
   toggle(checked: boolean){

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { CloudComponent } from './setting/cloud/cloud.component';
+
 
 const routes: Routes = [{
   path: '',
@@ -14,18 +14,12 @@ const routes: Routes = [{
       component: DashboardComponent,
     },
     {
-      path: 'layout',
-      loadChildren: () => import('./setting/setting.module')
-        .then(m => m.SettingModule),
-    },
-    
-    {
       path: '',
       redirectTo: 'dashboard',
       pathMatch: 'full',
     },
     {
-      path: 'forms',
+      path: 'setting',
       loadChildren: () => import('./setting/setting.module')
         .then(m => m.SettingModule),
     },

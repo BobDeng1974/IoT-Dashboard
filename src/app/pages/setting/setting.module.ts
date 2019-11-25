@@ -13,6 +13,8 @@ import {
 
 import { ThemeModule } from '../../@theme/theme.module';
 import { SettingComponent } from './setting.component';
+import { CloudComponent } from './cloud/cloud.component';
+import { SettingRoutingModule } from './setting-routing.module';
 
 @NgModule({
     imports: [
@@ -22,6 +24,7 @@ import { SettingComponent } from './setting.component';
       NbUserModule,
       NbButtonModule,
       NbActionsModule,
+      SettingRoutingModule,
       NbRadioModule,
       NbSelectModule,
       NbCheckboxModule,
@@ -32,6 +35,7 @@ import { SettingComponent } from './setting.component';
     ],
     declarations: [
      SettingComponent,
+     CloudComponent,
      
     ],
   })
