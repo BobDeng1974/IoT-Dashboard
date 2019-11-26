@@ -1,16 +1,48 @@
-<div class ="row">
-    <div class = "col-lg-6">
+<div class="row">
+    <div class = "col-md-6">
         <nb-card>
-            <nb-card-header>Cloud Settings</nb-card-header>
+            <nb-card-header>Cloud Setting</nb-card-header>
             <nb-card-body>
-                <input type="text" nbInput fullWidth placeholder="Server URL" [(ngModel)]="URL"/>
-                <input type="text" nbInput fullWidth placeholder="Username" [(ngModel)]="username"/>
-                <input type="number" nbInput fullWidth placeholder="Port" [(ngModel)]="port"/>
-                <input type="password" nbInput fullWidth placeholder="Password" [(ngModel)]="password"/>
-                
-                <button nbButton (click)="serversetting(URL,username,port,password)">test</button>
-
+                <form class = "form-horizontal" (ngSubmit)="onSubmit()">
+                    <div class = "form-group row">
+                        <label for="inputURL" class="label col-sm-3 form-control-label">URL</label>
+                        <div class = "col-sm-9">
+                            <input name="URL" type="text" nbInput fullWidth id="inputURL" placeholder="URL" [(ngModel)]="cloud.URL"/>
+                        </div>
+                    </div>
+                    <div class = "form-group row">
+                        <label for="inputusername" class="label col-sm-3 form-control-label">Username</label>
+                        <div class = "col-sm-9">
+                            <input name="username" type="text" nbInput fullWidth id="inputusername" placeholder="Username" [(ngModel)]="cloud.username"/>
+                        </div>
+                    </div>
+                    <div class = "form-group row">
+                        <label for="inputport" class="label col-sm-3 form-control-label">Port</label>
+                        <div class = "col-sm-9">
+                            <input name="port" type="number" nbInput fullWidth id="inputport" placeholder="Port Number" [(ngModel)]="cloud.port"/>
+                        </div>
+                    </div>
+                    <div class = "form-group row">
+                        <label for="inputpassword" class="label col-sm-3 form-control-label">Password</label>
+                        <div class = "col-sm-9">
+                            <input name="password" type="password" nbInput fullWidth id="inputpassword" placeholder="Password" [(ngModel)]="cloud.password"/>
+                        </div>
+                    </div>
+                 <div class="form-group row">
+                     <div class="offset-sm-3 col-sm-9">
+                         <div class="checkbox">
+                             <nb-checkbox>SSL</nb-checkbox>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="form-group row">
+                     <div class="offset-sm-3 col-sm-9">
+                         <button type="submit" nbButton status="info">Connect</button>
+                     </div>
+                 </div>
+                        
+                </form>
             </nb-card-body>
         </nb-card>
-    </div>
+    </div>  
 </div>

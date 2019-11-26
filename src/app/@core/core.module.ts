@@ -10,12 +10,14 @@ import { throwIfAlreadyLoaded } from './module-import-guard';
 import { 
   AnalyticsService,
   LayoutService,
+  
 }  from './utils';
 import { UserData } from './data/users';
 import { UserService } from './mock/users.service';
 import { MockDataModule } from './mock/mock-data.module';
 import { TemperatureHumidityService } from './mock/temperature-humidity.service';
 import { ElectricityService } from './mock/electricity.service';
+import { CloudService } from './utils/cloud.service';
 
 
 const socialLinks = [
@@ -89,6 +91,7 @@ export const NB_CORE_PROVIDERS = [
   },
   AnalyticsService,
   LayoutService,
+  CloudService,
 ];
 
 @NgModule({
