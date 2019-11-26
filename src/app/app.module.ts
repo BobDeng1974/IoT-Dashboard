@@ -43,7 +43,7 @@ export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule.initializeApp(environment.firebase, 'iot dashboard'),
     AngularFirestoreModule,
     BrowserModule,
     FormsModule,
