@@ -10,7 +10,6 @@ import { throwIfAlreadyLoaded } from './module-import-guard';
 import { 
   AnalyticsService,
   LayoutService,
-  
 }  from './utils';
 import { UserData } from './data/users';
 import { UserService } from './mock/users.service';

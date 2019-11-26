@@ -22,6 +22,7 @@ import { TemperatureDraggerComponent } from './temperature/temperature-dragger/t
 import { ElectricityComponent } from './electricity/electricity.component';
 import { ElectricityChartComponent } from './electricity/electricity-chart/electricity-chart.component';
 import { PublishComponent } from './publish/publish.component';
+import { WeatherComponent } from './weather/weather.component';
 
 
 
@@ -51,6 +52,7 @@ import { PublishComponent } from './publish/publish.component';
     ElectricityComponent,
     ElectricityChartComponent,
     PublishComponent,
+    WeatherComponent,
    
   ],
 })
