@@ -3,10 +3,12 @@
         <nb-card>
             <nb-card-header>Cloud Settings</nb-card-header>
             <nb-card-body>
-                <input type="text" nbInput fullWidth placeholder="Server URL"/>
-                <input type="text" nbInput fullWidth placeholder="Username"/>
-                <input type="number" nbInput fullWidth placeholder="Port"/>
-                <input type="password" nbInput fullWidth placeholder="Password"/>
+                <input type="text" nbInput fullWidth placeholder="Server URL" [(ngModel)]="URL"/>
+                <input type="text" nbInput fullWidth placeholder="Username" [(ngModel)]="username"/>
+                <input type="number" nbInput fullWidth placeholder="Port" [(ngModel)]="port"/>
+                <input type="password" nbInput fullWidth placeholder="Password" [(ngModel)]="password"/>
+                
+                <button nbButton (click)="serversetting(URL,username,port,password)">test</button>
 
             </nb-card-body>
         </nb-card>

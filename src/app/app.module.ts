@@ -3,6 +3,8 @@
  * Copyright Akveo. All Rights Reserved.
  * Licensed under the MIT License. See License.txt in the project root for license information.
  */
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from  '@angular/fire/firestore';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -22,10 +24,10 @@ import {
   NbWindowModule,
 } from '@nebular/theme';
 import {
-  IMqttMessage,
   MqttModule,
   IMqttServiceOptions
 } from 'ngx-mqtt';
+import { environment } from '../environments/environment';
 
 
 export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
@@ -41,6 +43,8 @@ export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,

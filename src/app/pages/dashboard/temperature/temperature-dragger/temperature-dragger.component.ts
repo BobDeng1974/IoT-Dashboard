@@ -10,7 +10,7 @@ import {
     OnChanges,
   } from '@angular/core';
   import { Location, LocationStrategy } from '@angular/common';
-  import { MqttService, IMqttMessage } from 'ngx-mqtt';
+ 
   
   let uniqueId = 0;
   const VIEW_BOX_SIZE = 300;

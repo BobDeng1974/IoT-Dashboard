@@ -21,6 +21,7 @@ export class PublishComponent implements OnInit {
       this.checked = checked;
   } 
   
+  
 
   public publish(topic:string, message:string)
   {
