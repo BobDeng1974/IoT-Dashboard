@@ -17,6 +17,7 @@ import { MockDataModule } from './mock/mock-data.module';
 import { TemperatureHumidityService } from './mock/temperature-humidity.service';
 import { ElectricityService } from './mock/electricity.service';
 import { CloudService } from './utils/cloud.service';
+import { WeatherService } from './utils/weather.service';
 
 
 const socialLinks = [
@@ -91,6 +92,7 @@ export const NB_CORE_PROVIDERS = [
   AnalyticsService,
   LayoutService,
   CloudService,
+  WeatherService,
 ];
 
 @NgModule({
