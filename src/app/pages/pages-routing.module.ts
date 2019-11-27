@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { OeeComponent } from './oee/oee.component';
 
 
 const routes: Routes = [{
@@ -12,6 +13,10 @@ const routes: Routes = [{
     {
       path: 'dashboard',
       component: DashboardComponent,
+    },
+    {
+      path: 'oee',
+      component: OeeComponent,
     },
     {
       path: '',

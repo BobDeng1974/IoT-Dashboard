@@ -8,6 +8,12 @@ export const MENU_ITEMS: NbMenuItem[] = [
     home: true,
   },
   {
+    title: 'OEE',
+    icon: 'credit-card-outline',
+    link: '/pages/oee',
+    home: true,
+  },
+  {
   title: 'Setting',
   icon: 'monitor-outline',
    children:[
