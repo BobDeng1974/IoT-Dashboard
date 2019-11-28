@@ -6,8 +6,8 @@
       <span class="status">{{weatherData.list[0].weather[0].description}}</span>
     </div>
       <div *ngIf="weatherData?.list[0].main.temp" class="today">
-        <span class="today-temperature h1">{{weatherData.list[0].main.temp | number:'1.0-0'}}&deg;</span>
-        <nb-icon icon="umbrella-outline" pack="eva" class="today-icon"></nb-icon>
+        <span class="today-temperature h2">{{weatherData.list[0].main.temp | number:'1.0-0'}}&deg;</span>
+        <div class ="icon"><img src= "http://openweathermap.org/img/wn/{{weatherData.list[0].weather[0].icon}}@2x.png" width="100" height="100"  alt=""></div>
         <!-- <nb-icon icon="umbrella-outline" pack="eva" class="today-icon"></nb-icon> -->
       </div>
 
