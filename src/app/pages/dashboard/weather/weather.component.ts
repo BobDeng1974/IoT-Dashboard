@@ -9,8 +9,8 @@ import { WeatherService } from '../../../@core/utils/weather.service';
 
 export class WeatherComponent{
     location={
-        city:'penang',
-        code:'malaysia',
+        city:'Bayan Baru',
+        code:'Penang',
     };
 
     
@@ -25,7 +25,7 @@ export class WeatherComponent{
     ngOnInit(){
         this.weatherservice.getWeather(this.location.city,this.location.code).subscribe((data)=>{
         this.weatherData = data;
-        console.log(this.weatherData.list[0].wind.speed);
+        console.log(this.weatherData);
         })
     }
 

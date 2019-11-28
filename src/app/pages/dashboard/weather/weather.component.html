@@ -1,21 +1,23 @@
 <nb-card size="medium">
     <nb-card-body>
-      <span *ngIf = "weatherData.city.name" class="h3 location">{{weatherData.city.name }}</span>
+      <span class="h3 location">{{weatherData.city.name }}</span>
       <span class="date">{{mydate | date}}</span>
+      <span class="status">{{weatherData.list[0].weather[0].description}}</span>
   
       <div class="today">
-        <span class="today-temperature h1">{{weatherData.list[0].main.temp}}F</span>
-        <nb-icon icon="sun-outline" pack="eva" class="today-icon"></nb-icon>
+        <span class="today-temperature h1">{{weatherData.list[0].main.temp | number:'1.0-0'}}&deg;</span>
+        <nb-icon icon="umbrella-outline" pack="eva" class="today-icon"></nb-icon>
+        <!-- <nb-icon icon="umbrella-outline" pack="eva" class="today-icon"></nb-icon> -->
       </div>
   
       <div class="today-details">
         <div class="parameter">
           <span class="caption parameter-name">max</span>
-          <span class="parameter-value">{{weatherData.list[0].main.temp_max}}F</span>
+          <span class="parameter-value">{{weatherData.list[0].main.temp_max | number:'1.0-0'}}&deg;</span>
         </div>
         <div class="parameter">
           <span class="caption parameter-name">min</span>
-          <span class="parameter-value">{{weatherData.list[0].main.temp_min}}F</span>
+          <span class="parameter-value">{{weatherData.list[0].main.temp_min | number:'1.0-0'}}&deg;</span>
         </div>
         <div class="parameter">
           <span class="caption parameter-name">wind</span>
