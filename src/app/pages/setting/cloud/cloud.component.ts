@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CloudService } from '../../../@core/utils/cloud.service';
 import { Cloud } from '../../../@core/data/cloudmodel';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
     selector: 'ngx-cloud',
@@ -9,17 +10,23 @@ import { Cloud } from '../../../@core/data/cloudmodel';
 })
 export class CloudComponent {
  //    cloud: Cloud[];
-    cloud: Cloud = {
-        URL: '',
-        username: '',
-        port: 0,
-        password: '',
+   
+
+    form: FormGroup;
+    constructor(private cloudService: CloudService, private formBuilder: FormBuilder){
+      this.createForm();
     }
 
-
-    constructor(private cloudService: CloudService){
-      
+    createForm(){
+        this.form = this.formBuilder.group({
+            URL:['', Validators.required],
+            username:['', Validators.required],
+            port:['', Validators.required],
+            password: ['', Validators.required],
+        })
     }
+
+    
 
     // ngOnInit(){
     //     this.cloudService.getItems(). subscribe(items => {
@@ -28,8 +35,10 @@ export class CloudComponent {
     //     });
     // } get data
 
-    onSubmit(){
-        this.cloudService.addServer(this.cloud);
+    onSubmit(formValues){
+        // this.cloudService.addServer(formValues);
+        console.log(formValues);
+        
     }
 
   

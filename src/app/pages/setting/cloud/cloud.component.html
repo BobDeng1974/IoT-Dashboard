@@ -1,4 +1,4 @@
-<div class="row">
+<!-- <div class="row">
     <div class = "col-md-6">
         <nb-card>
             <nb-card-header>Cloud Setting</nb-card-header>
@@ -45,4 +45,54 @@
             </nb-card-body>
         </nb-card>
     </div>  
-</div>
+</div> -->
+
+<div class="row">
+        <div class = "col-md-6">
+            <nb-card>
+                <nb-card-header>Cloud Setting</nb-card-header>
+                <nb-card-body>
+                    <form [formGroup]="form"  class = "form-horizontal" (ngSubmit)="onSubmit(form.value)">
+                        <div class = "form-group row">
+                            <label for="inputURL" class="label col-sm-3 form-control-label">URL</label>
+                            <div class = "col-sm-9">
+                                <input name="URL" type="text" nbInput fullWidth id="inputURL" placeholder="URL" formControlName="URL"/>
+        
+                            </div>
+                        </div>
+                        <div class = "form-group row">
+                            <label for="inputusername" class="label col-sm-3 form-control-label">Username</label>
+                            <div class = "col-sm-9">
+                                <input name="username" type="text" nbInput fullWidth id="inputusername" placeholder="Username" formControlName="username"/>
+                            </div>
+                        </div>
+                        <div class = "form-group row">
+                            <label for="inputport" class="label col-sm-3 form-control-label">Port</label>
+                            <div class = "col-sm-9">
+                                <input name="port" type="number" nbInput fullWidth id="inputport" placeholder="Port Number" formControlName="port"/>
+                            </div>
+                        </div>
+                        <div class = "form-group row">
+                            <label for="inputpassword" class="label col-sm-3 form-control-label">Password</label>
+                            <div class = "col-sm-9">
+                                <input name="password" type="password" nbInput fullWidth id="inputpassword" placeholder="Password" formControlName="password"/>
+                            </div>
+                        </div>
+                     <div class="form-group row">
+                         <div class="offset-sm-3 col-sm-9">
+                             <div class="checkbox">
+                                 <nb-checkbox>SSL</nb-checkbox>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="form-group row">
+                         <div class="offset-sm-3 col-sm-9">
+                             <button type="submit" nbButton status="info">Connect</button>
+                         </div>
+                     </div>
+                            
+                    </form>
+                </nb-card-body>
+            </nb-card>
+        </div>  
+    </div>

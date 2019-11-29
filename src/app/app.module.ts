@@ -6,7 +6,7 @@
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from  '@angular/fire/firestore';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -44,6 +44,7 @@ export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
   declarations: [AppComponent],
   imports: [
     AngularFireModule.initializeApp(environment.firebase, 'iot dashboard'),
+    ReactiveFormsModule,
     AngularFirestoreModule,
     BrowserModule,
     FormsModule,

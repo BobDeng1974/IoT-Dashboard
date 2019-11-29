@@ -15,7 +15,7 @@ import { ThemeModule } from '../../@theme/theme.module';
 import { SettingComponent } from './setting.component';
 import { CloudComponent } from './cloud/cloud.component';
 import { SettingRoutingModule } from './setting-routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     imports: [
@@ -33,6 +33,7 @@ import { FormsModule } from '@angular/forms';
       NbButtonModule,
       NbInputModule,
       FormsModule,
+      ReactiveFormsModule,
       
      
     ],
