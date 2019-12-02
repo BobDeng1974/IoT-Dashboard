@@ -10,7 +10,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class CloudComponent {
  //    cloud: Cloud[];
-   
+   cloud: Cloud = {
+       URL: '',
+       username: '',
+       port: 0,
+       password: '',
+   }
 
     form: FormGroup;
     constructor(private cloudService: CloudService, private formBuilder: FormBuilder){
@@ -39,6 +44,10 @@ export class CloudComponent {
         // this.cloudService.addServer(formValues);
         console.log(formValues);
         
+    }
+
+    onConnect(){
+        this.cloudService.addServer(this.cloud);
     }
 
   
