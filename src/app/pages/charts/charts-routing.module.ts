@@ -6,10 +6,12 @@ import { OEEChartsComponents } from './oeecharts/oeecharts.component';
 const routes: Routes = [{
     path:'',
     component: ChartsComponent,
-    children: [{
-        path: 'oeecharts',
-        component: OEEChartsComponents,
-    }],
+    children: [
+        {
+            path:'oeecharts',
+            component: OEEChartsComponents,
+        },
+    ],
 }];
 
 @NgModule({

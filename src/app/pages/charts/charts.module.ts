@@ -4,6 +4,8 @@ import { ThemeModule } from '../../@theme/theme.module';
 import { NbCardModule } from '@nebular/theme';
 import { ChartsRoutingModule, routedComponents } from './charts-routing.module';
 import { EchartsLineComponent } from './oeecharts/echarts-line.component';
+import { ChartModule } from 'angular2-chartjs';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 const component = [
     EchartsLineComponent,
@@ -14,8 +16,10 @@ const component = [
         NgxEchartsModule,
         ThemeModule,
         NbCardModule,
-        ChartsModule,
+        ChartModule,
         ChartsRoutingModule,
+        NgxChartsModule,
+        
 
     ],
     declarations:[... routedComponents, ... component],

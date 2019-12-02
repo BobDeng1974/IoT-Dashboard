@@ -14,11 +14,11 @@ const routes: Routes = [{
       path: 'dashboard',
       component: DashboardComponent,
     },
-    // {
-    //   path: 'oee',
-    //   loadChildren: () => import('./oee/oee.module')
-    //     .then(m => m.OeeModule),
-    // },
+    {
+      path: 'charts',
+      loadChildren: () => import('./charts/charts.module')
+        .then(m => m.ChartsModule),
+    },
     {
       path: '',
       redirectTo: 'dashboard',

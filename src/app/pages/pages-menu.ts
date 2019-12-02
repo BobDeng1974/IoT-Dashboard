@@ -7,12 +7,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/dashboard',
     home: true,
   },
-  {
-    title: 'OEE',
-    icon: 'credit-card-outline',
-    link: '/pages/oee',
-    home: true,
-  },
+  
   {
   title: 'Setting',
   icon: 'monitor-outline',
@@ -24,6 +19,16 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
 ],
   },
+{
+  title: 'OEE',
+  icon: 'pie-chart-outline',
+  children: [
+    {
+      title:'Charts',
+      link:'/pages/charts/oeecharts',
+    },
+  ],
+},
   {
     title: 'FEATURES',
     group: true,
