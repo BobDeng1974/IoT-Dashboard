@@ -1,0 +1,12 @@
+@import '../../../@theme/styles/themes';
+
+@include nb-install-component() {
+  ngx-echarts-line,
+  
+  
+
+  ::ng-deep .echart {
+    height: 100%;
+    width: 100%;
+  }
+}
