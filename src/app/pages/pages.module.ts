@@ -6,6 +6,7 @@ import { PagesComponent } from './pages.component';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { PagesRoutingModule } from './pages-routing.module';
 import { FormsModule } from '@angular/forms';
+import { RegisterModule } from './register/register.module';
 
 
 
@@ -17,6 +18,7 @@ import { FormsModule } from '@angular/forms';
     NbMenuModule,
     DashboardModule,
     FormsModule,
+    RegisterModule,
     
     
   ],

@@ -7,6 +7,12 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/dashboard',
     home: true,
   },
+  {
+    title: 'Register',
+    icon: 'copy-outline',
+    link: '/pages/register',
+    
+  },
   
   {
   title: 'Setting',
@@ -29,11 +35,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     },
   ],
 },
-{
-  title: 'Register',
-  icon: 'copy-outline',
-  link: 'pages/register'
-},
+
   {
     title: 'FEATURES',
     group: true,

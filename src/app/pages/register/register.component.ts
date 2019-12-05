@@ -1,6 +1,5 @@
 import { Component } from "@angular/core";
-import { CloudComponent } from '../setting/cloud/cloud.component';
-import { registerLocaleData } from '@angular/common';
+
 
 @Component({
     selector:'ngx-register',
