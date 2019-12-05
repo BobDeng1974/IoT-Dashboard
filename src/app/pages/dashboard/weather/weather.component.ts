@@ -10,7 +10,7 @@ import { WeatherService } from '../../../@core/utils/weather.service';
 export class WeatherComponent{
     location={
         city:'Bayan Baru',
-        code:'Penang',
+        code:'MY',
     };
 
     
@@ -25,7 +25,10 @@ export class WeatherComponent{
     ngOnInit(){
         this.weatherservice.getWeather(this.location.city,this.location.code).subscribe((data)=>{
         this.weatherData = data;
-        console.log(this.weatherData);
+        // console.log(this.weatherData);
+
+        let temp_max = data['list'].map( data => data.main.temp_max)
+        console.log(temp_max);
         })
     }
 

@@ -1,5 +1,9 @@
 import { AfterViewInit, Component, OnDestroy } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
+import { MqttService, IMqttMessage } from 'ngx-mqtt';
+import { Subscription } from 'rxjs';
+import { WeatherService } from '../../../@core/utils/weather.service';
+
 
 @Component({
   selector: 'ngx-echarts-line',
@@ -10,15 +14,34 @@ import { NbThemeService } from '@nebular/theme';
 export class EchartsLineComponent implements AfterViewInit, OnDestroy {
   options: any = {};
   themeSubscription: any;
+  public subs: Subscription;
+  public message: string;
+  temperature:number;
 
-  constructor(private theme: NbThemeService) {
+
+  constructor(private theme: NbThemeService, private _mqttService: MqttService, private _weatherService: WeatherService) {
   }
 
   ngAfterViewInit() {
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
 
+      
       const colors: any = config.variables;
       const echarts: any = config.variables.echarts;
+
+      this._weatherService.getWeather('Bayan Baru', 'MY').subscribe(data => {
+        
+
+        let temp_max = data['list'].map( data => data.main.temp_max)
+        console.log(temp_max);
+      })
+
+      // this.subs = this._mqttService.observe('temperature').subscribe((message:IMqttMessage) => {
+      //   this.message = message.payload.toString();
+      //   console.log('Temperature :' + this.message);
+      //   this.temperature = Number(this.message);
+      //   console.log(this.temperature);
+      // });
 
       this.options = {
         backgroundColor: echarts.bg,
@@ -83,7 +106,7 @@ export class EchartsLineComponent implements AfterViewInit, OnDestroy {
           {
             name: 'Line 1',
             type: 'line',
-            data: [1, 3, 9, 27, 81, 247, 741, 2223, 6669],
+            data: [5, 3, 9, 27, 81, 247, 741, 2223, 6669],
           },
           {
             name: 'Line 2',

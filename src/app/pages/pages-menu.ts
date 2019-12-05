@@ -29,6 +29,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     },
   ],
 },
+{
+  title: 'Register',
+  icon: 'copy-outline',
+  link: 'pages/register'
+},
   {
     title: 'FEATURES',
     group: true,
