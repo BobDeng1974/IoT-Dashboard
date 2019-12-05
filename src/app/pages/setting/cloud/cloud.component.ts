@@ -17,19 +17,21 @@ export class CloudComponent {
        password: '',
    }
 
+   errors:string[];
+
     form: FormGroup;
     constructor(private cloudService: CloudService, private formBuilder: FormBuilder){
-      this.createForm();
+    //   this.createForm();
     }
 
-    createForm(){
-        this.form = this.formBuilder.group({
-            URL:['', Validators.required],
-            username:['', Validators.required],
-            port:['', Validators.required],
-            password: ['', Validators.required],
-        })
-    }
+    // createForm(){
+    //     this.form = this.formBuilder.group({
+    //         URL:['', Validators.required],
+    //         username:['', Validators.required],
+    //         port:['', Validators.required],
+    //         password: ['', Validators.required],
+    //     })
+    // }
 
     
 
@@ -41,7 +43,7 @@ export class CloudComponent {
     // } get data
 
     onSubmit(formValues){
-        // this.cloudService.addServer(formValues);
+        this.cloudService.addServer(formValues);
         console.log(formValues);
         
     }
@@ -50,6 +52,10 @@ export class CloudComponent {
         this.cloudService.addServer(this.cloud);
     }
 
+    getConfigValue(key:string)
+    {
+
+    }
   
     
 

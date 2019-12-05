@@ -3,17 +3,37 @@
         <nb-card>
             <nb-card-header>Cloud Setting</nb-card-header>
             <nb-card-body>
-                <form class = "form-horizontal" (ngSubmit)="onConnect()">
-                    <div class = "form-group row" [class.has-error]="URLNameControl.invalid">
+                <form class = "form-horizontal" (ngSubmit)=onConnect() #form ="ngForm" aria-labelledby="title">
+
+                    <div class = "form-group row">
                         <label for="inputURL" class="label col-sm-3 form-control-label">URL</label>
                         <div class = "col-sm-9">
-                            <input name="URL" type="text" nbInput fullWidth id="inputURL" 
-                            placeholder="URL" [(ngModel)]="cloud.URL" #URLNameControl="ngModel"/>
+                            <input name="URL" type="text" 
+                            nbInput fullWidth id="inputURL" 
+                            placeholder="URL" 
+                            [(ngModel)]="cloud.URL"
+                            pattern=".+@.+\..+" 
+                            #URL="ngModel"
+                            autofocus
+                            [status]="URL.dirty ? (URL.invalid ? 'danger': 'success') : ''"
+                            [required]="getConfigValue('forms.validation.URL.required')"
+                            [attr.aria-invalid]="URL.invalid && URL.touched? true :null"
+                            />
+                            <ng-container *ngIf="URL.invalid && email.touched">
+                                <p class="caption status-danger" *ngIf="URL.errors?.required">
+                                    URL is required!
+                                </p>
+                                <p class="caption status-danger" *ngIf="URL.errors?.pattern">
+                                    URL should be the real one!
+                                </p>
+                            </ng-container>
                         </div>
-                        <span class="help-block" *ngIf="URLNameControl.invalid && URLNameControl.touched">
-                            Full Name is Required
-                        </span>
                     </div>
+
+
+
+
+
                     <div class = "form-group row">
                         <label for="inputusername" class="label col-sm-3 form-control-label">Username</label>
                         <div class = "col-sm-9">
@@ -50,20 +70,18 @@
         </nb-card>
     </div>  
 </div>
-<!-- 
-<div class="row">
+
+<!-- <div class="row">
         <div class = "col-md-6">
             <nb-card>
                 <nb-card-header>Cloud Setting</nb-card-header>
                 <nb-card-body>
                     <form [formGroup]="form"  class = "form-horizontal" (ngSubmit)="onSubmit(form.value)">
-                        <div class = "form-group row" [ngClass]="{'has-error': (form.controls.URL.errors && form.controls.URL.dirty), 'has-success': !form.controls.username.errors}">
+                        <div class = "form-group row">
                             <label for="inputURL" class="label col-sm-3 form-control-label">URL</label>
                             <div class = "col-sm-9">
                                 <input name="URL" type="text" nbInput fullWidth id="inputURL" placeholder="URL" formControlName="URL"/>
-                                <span class="help-block">
-                                    The field is required
-                                </span> 
+                               
                                 
                             </div>
                         </div>
