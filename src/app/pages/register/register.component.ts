@@ -11,6 +11,7 @@ import { Register } from '../../@core/data/registermodel';
 
 export class RegisterComponent{
 
+    submitted:boolean=false;
     register:Register ={
         name: '',
         email: '',

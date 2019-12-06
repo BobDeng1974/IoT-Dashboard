@@ -83,7 +83,6 @@
                                     Password should contain 
                                     8 or more characters. At least one number, one uppercase and lowercase letter
                                 </p>
-
                             </ng-container>
                         </div>
                     </div>
@@ -91,12 +90,38 @@
 
 
                     <div class="form-group row">
-                        <label for="inputName" class="label col-sm-3 fomr-contro-label">Confirm Password</label>
+                        <label for="input-re-password" class="label col-sm-3 form-control-label">Confirm Password</label>
                         <div class="col-sm-9">
-                            <input name="password" type="password" nbInput fullWidth id="inputconfirmpassword" placeholder="Confirm Password" [(ngModel)]="register.confirmpassword"/>
+                            <input name="rePass" 
+                            type="password" 
+                            nbInput fullWidth 
+                            id="input-re-password" 
+                            placeholder="Confirm Password" 
+                            [(ngModel)]="register.confirmpassword"
+                            #rePass = "ngModel"
+                            required
+                            [status]="rePass.dirty ? (rePass.invalid || password.value != rePass.value ? 'danger' : 'success') : '' "
+                            [attr.aria-invalid]="rePass.invalid && rePass.touched ? true : null"
+                            
+                            />
+                            <ng-container *ngIf="rePass.invalid && rePass.touched">
+                            <p class="caption status-danger" *ngIf="rePass.errors?.required">
+                                Password Confirmation is required!
+                            </p>
+                            <p class="caption status-danger" *ngIf="password.value != rePass.value && !rePass.errors?.required">
+                                Password does not match!
+                            </p>
+                        </ng-container>
                         </div>
                     </div>
                    
+                    <button nbButton
+                    fullWidth
+                    status="primary"
+                    [disabled]="submitted || form.valid"
+                    [class.btn-pulse]="submitted"
+                    >Register</button>
+
                 </form>
             </nb-card-body>
         </nb-card>
