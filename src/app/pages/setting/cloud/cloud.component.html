@@ -12,20 +12,17 @@
                             nbInput fullWidth id="inputURL" 
                             placeholder="URL" 
                             [(ngModel)]="cloud.URL"
-                            pattern=".+@.+\..+" 
                             #URL="ngModel"
                             autofocus
                             [status]="URL.dirty ? (URL.invalid ? 'danger': 'success') : ''"
                             [required]="getConfigValue('forms.validation.URL.required')"
                             [attr.aria-invalid]="URL.invalid && URL.touched? true :null"
                             />
-                            <ng-container *ngIf="URL.invalid && email.touched">
+                            <ng-container *ngIf="URL.invalid && URL.touched">
                                 <p class="caption status-danger" *ngIf="URL.errors?.required">
                                     URL is required!
                                 </p>
-                                <p class="caption status-danger" *ngIf="URL.errors?.pattern">
-                                    URL should be the real one!
-                                </p>
+                                
                             </ng-container>
                         </div>
                     </div>
@@ -37,19 +34,81 @@
                     <div class = "form-group row">
                         <label for="inputusername" class="label col-sm-3 form-control-label">Username</label>
                         <div class = "col-sm-9">
-                            <input name="username" type="text" nbInput fullWidth id="inputusername" placeholder="Username" [(ngModel)]="cloud.username"/>
+                            <input name="username" 
+                            type="text"
+                            #username="ngModel"
+                            nbInput fullWidth 
+                            id="inputusername" 
+                            placeholder="Username" 
+                            [(ngModel)]="cloud.username"
+                            autofocus
+                            [status]="username.dirty ? (username.invalid ? 'danger':'success') : ''"
+                            [required]="getConfigValue('forms.validation.username.required')"
+                            [attr.aria-invalid]="username.invalid && username.touched? true:null"
+                            />
+                            <ng-container *ngIf="username.invalid && username.touched">
+                                <p class="caption status-danger" *ngIf="username.errors?.required">
+                                    Username is Required
+                                </p>
+                                
+                            </ng-container>
                         </div>
                     </div>
+
+
+
+                    
                     <div class = "form-group row">
                         <label for="inputport" class="label col-sm-3 form-control-label">Port</label>
                         <div class = "col-sm-9">
-                            <input name="port" type="number" nbInput fullWidth id="inputport" placeholder="Port Number" [(ngModel)]="cloud.port"/>
+                            <input name="port" 
+                            type="number" 
+                            nbInput fullWidth 
+                            id="inputport" 
+                            placeholder="Port Number" 
+                            [(ngModel)]="cloud.port"
+                            #port = "ngModel"
+                            pattern= "^[0–9]$"
+                            autofocus
+                            [status]="port.dirty ? (port.invalid ? 'danger' : 'success') : ''"
+                            [required]="getConfigValue('forms.validation.port.required')"
+                            [attr.aria-invalid]="port.invalid && port.touched? true:null"
+                            />
+                            <ng-container *ngIf="port.invalid && port.touched">
+                                <p class="caption status-danger" *ngIf="port.errors?.required">
+                                    Port is Required
+                                </p>
+                                <p class="caption status-danger" *ngIf="port.erros?.pattern">
+                                    Port has to be Number !
+                                </p>
+                            </ng-container>
                         </div>
                     </div>
+
+
+
+
                     <div class = "form-group row">
                         <label for="inputpassword" class="label col-sm-3 form-control-label">Password</label>
                         <div class = "col-sm-9">
-                            <input name="password" type="password" nbInput fullWidth id="inputpassword" placeholder="Password" [(ngModel)]="cloud.password"/>
+                            <input name="password" 
+                            type="password" 
+                            nbInput fullWidth 
+                            id="inputpassword" 
+                            placeholder="Password" 
+                            [(ngModel)]="cloud.password"
+                            #password = "ngModel"
+                            
+                            autofocus
+                            [status]="password.dirty ? (password.invalid ? 'danger' : 'success') : ''"
+                            [required]="getConfigValue('forms.validation.password.required')"
+                            [attr.aria-invalid]="password.invalid && password.touched ? true:null"
+                              />
+                              <ng-container *ngIf="password.invalid && password.touched">
+                                  <p class="caption status-danger" *ngIf="password.errors?.required">
+                                      Password is Required
+                                  </p>
+                              </ng-container>
                         </div>
                     </div>
                  <div class="form-group row">
@@ -59,9 +118,19 @@
                          </div>
                      </div>
                  </div>
+
+
+
                  <div class="form-group row">
                      <div class="offset-sm-3 col-sm-9">
-                         <button type="submit" nbButton status="info">Connect</button>
+                         <button type="submit" nbButton 
+                         fullWidth
+                         status="primary"
+                         size="large"
+                         [disabled]="submitted && form.invalid"
+                         [class.btn-pulse]="submitted && form.invalid">
+                         Connect
+                        </button>
                      </div>
                  </div>
                         
