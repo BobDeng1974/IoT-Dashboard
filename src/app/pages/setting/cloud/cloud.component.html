@@ -12,10 +12,9 @@
                             nbInput fullWidth id="inputURL" 
                             placeholder="URL" 
                             [(ngModel)]="cloud.URL"
-                            #URL="ngModel"
-                            autofocus
+                            #URL="ngModel"                           
+                            required                        
                             [status]="URL.dirty ? (URL.invalid ? 'danger': 'success') : ''"
-                            [required]="getConfigValue('forms.validation.URL.required')"
                             [attr.aria-invalid]="URL.invalid && URL.touched? true :null"
                             />
                             <ng-container *ngIf="URL.invalid && URL.touched">
@@ -23,7 +22,9 @@
                                     URL is required!
                                 </p>
                                 
+                                
                             </ng-container>
+                            
                         </div>
                     </div>
 
@@ -41,9 +42,8 @@
                             id="inputusername" 
                             placeholder="Username" 
                             [(ngModel)]="cloud.username"
-                            autofocus
-                            [status]="username.dirty ? (username.invalid ? 'danger':'success') : ''"
-                            [required]="getConfigValue('forms.validation.username.required')"
+                            required
+                            [status]="username.dirty ? (username.invalid ? 'danger':'success') : ''"                  
                             [attr.aria-invalid]="username.invalid && username.touched? true:null"
                             />
                             <ng-container *ngIf="username.invalid && username.touched">
@@ -69,9 +69,8 @@
                             [(ngModel)]="cloud.port"
                             #port = "ngModel"
                             pattern= "^[0–9]$"
-                            autofocus
-                            [status]="port.dirty ? (port.invalid ? 'danger' : 'success') : ''"
-                            [required]="getConfigValue('forms.validation.port.required')"
+                            required
+                            [status]="port.dirty ? (port.invalid ? 'danger' : 'success') : ''"                          
                             [attr.aria-invalid]="port.invalid && port.touched? true:null"
                             />
                             <ng-container *ngIf="port.invalid && port.touched">
@@ -99,9 +98,9 @@
                             [(ngModel)]="cloud.password"
                             #password = "ngModel"
                             
-                            autofocus
+                            required
                             [status]="password.dirty ? (password.invalid ? 'danger' : 'success') : ''"
-                            [required]="getConfigValue('forms.validation.password.required')"
+                            
                             [attr.aria-invalid]="password.invalid && password.touched ? true:null"
                               />
                               <ng-container *ngIf="password.invalid && password.touched">
