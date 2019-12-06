@@ -3,23 +3,97 @@
         <nb-card>
             <nb-card-header>Register</nb-card-header>
             <nb-card-body>
-                <form class="form-horizontal">
+                <form class="form-horizontal" (ngSubmit)=onConnect() #form="ngForm" aria-labelledby="title">
                     <div class="form-group row">
                         <label for="inputName" class="label col-sm-3 fomr-contro-label">Name</label>
                         <div class="col-sm-9">
-                            <input name="username" type="text" nbInput fullWidth id="inputusername" placeholder="Username" />
+                            <input name="name" 
+                            type="text" 
+                            nbInput fullWidth
+                            id="inputusername" 
+                            placeholder="Username" 
+                            [(ngModel)]="register.name"
+                            #name="ngModel"
+                            required
+                            [status]="name.dirty ? (name.invalid ? 'danger':'success'): ''"
+                            [attr.aria-invalid]="name.invalid && name.touched? true:null"
+                            />
+                            <ng-container *ngIf="name.invalid && name.touched">
+                                <p class="caption status-danger" *ngIf="name.errors?.required">
+                                    Username is Required!
+                                </p>
+                            </ng-container>
                         </div>
                     </div>
+
+
+
+
                     <div class="form-group row">
                         <label for="inputName" class="label col-sm-3 fomr-contro-label">Email</label>
                         <div class="col-sm-9">
-                            <input name="email" type="text" nbInput fullWidth id="inputemail" placeholder="Email" />
+                            <input name="email" 
+                            type="text" 
+                            nbInput fullWidth 
+                            id="inputemail" 
+                            placeholder="Email" 
+                            [(ngModel)]="register.email"
+                            #email="ngModel"
+                            required
+                            pattern=".+@.+\..+"
+                            [status]="email.dirty ? (email.invalid ? 'danger':'success') : ''"
+                            [attr.aria-invalid]="email.invalid && email.touched? true: null"
+                            />
+                            <ng-container *ngIf="email.invalid && email.touched">
+                                <p class="caption status-danger" *ngIf="email.errors?.required">
+                                    Email is Required!
+                                </p>
+                                <p class="caption status-danger" *ngIf="email.errors?.pattern">
+                                    Email should be the real one
+                                </p>
+                            </ng-container>
                         </div>
                     </div>
+
+
+
+
+
                     <div class="form-group row">
                         <label for="inputName" class="label col-sm-3 fomr-contro-label">Password</label>
                         <div class="col-sm-9">
-                            <input name="password" type="password" nbInput fullWidth id="inputpassword" placeholder="Password" />
+                            <input name="password" 
+                            type="password" 
+                            nbInput fullWidth 
+                            id="inputpassword" 
+                            placeholder="Password" 
+                            [(ngModel)]="register.password"
+                            #password="ngModel"
+                            required
+                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                            maxlength="12"
+                            minlength="4"
+                            [attr.aria-invalid]="password.invalid && password.touched"
+                            />
+                            <ng-container *ngIf="password.invalid && password.touched">
+                                <p class="caption status-danger" *ngIf="password.errors?.required">
+                                    Password is Required!
+                                </p>
+                                <p class="caption status-danger" *ngIf="password.errors?.pattern">
+                                    Password should contain 
+                                    8 or more characters. At least one number, one uppercase and lowercase letter
+                                </p>
+
+                            </ng-container>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group row">
+                        <label for="inputName" class="label col-sm-3 fomr-contro-label">Confirm Password</label>
+                        <div class="col-sm-9">
+                            <input name="password" type="password" nbInput fullWidth id="inputconfirmpassword" placeholder="Confirm Password" [(ngModel)]="register.confirmpassword"/>
                         </div>
                     </div>
                    

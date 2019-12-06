@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { Register } from '../../@core/data/registermodel';
 
 
 @Component({
@@ -7,6 +8,16 @@ import { Component } from "@angular/core";
     styleUrls: ['./register.component.scss']
 })
 
+
 export class RegisterComponent{
 
+    register:Register ={
+        name: '',
+        email: '',
+        password: '',
+        confirmpassword:'',
+    }
+
+
+    
 }
