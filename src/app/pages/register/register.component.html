@@ -118,7 +118,7 @@
                     <button nbButton
                     fullWidth
                     status="primary"
-                    [disabled]="submitted || form.valid"
+                    [disabled]="false || !form.valid"
                     [class.btn-pulse]="submitted"
                     >Register</button>
 
