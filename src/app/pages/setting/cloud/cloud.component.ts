@@ -52,11 +52,6 @@ export class CloudComponent {
         this.cloudService.addServer(this.cloud);
     }
 
-    getConfigValue(key:string)
-    {
-
-    }
-  
     
 
    
