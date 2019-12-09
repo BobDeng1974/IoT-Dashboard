@@ -5,13 +5,15 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+
 @Injectable()
 export class CloudService {
 
     cloudCollection: AngularFirestoreCollection<Cloud>;
     cloud: Observable<Cloud[]>
+    
 
-    constructor(public afs:AngularFirestore){
+    constructor(public afs:AngularFirestore,){
         // this.cloud = this.afs.collection('cloud').valueChanges();
         this.cloudCollection = this.afs.collection('cloud');
 
@@ -31,5 +33,6 @@ export class CloudService {
 
     addServer(cloud: Cloud){
         this.cloudCollection.add(cloud);
+        console.log(cloud.URL);
     }
 }

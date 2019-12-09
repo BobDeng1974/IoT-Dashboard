@@ -50,6 +50,7 @@ export class CloudComponent {
 
     onConnect(){
         this.cloudService.addServer(this.cloud);
+        
     }
 
     

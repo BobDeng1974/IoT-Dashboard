@@ -21,15 +21,16 @@ export class RegisterComponent{
         password: '',
         confirmpassword:'',
     }
-    constructor(private registerService: Authentication)
+    constructor()
     {
+        console.log(this.register.name)
 
     }
    
 
-    onRegister(){
-        this.registerService.addRegister(this.register);
-    }
+    // onRegister(){
+    //     this.registerService.addRegister(this.register);
+    // }
 
     
 }
