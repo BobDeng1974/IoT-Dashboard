@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Register } from '../../@core/data/registermodel';
 import { Authentication } from '../../@core/utils/auth.service';
 
@@ -11,7 +11,7 @@ import { Authentication } from '../../@core/utils/auth.service';
 })
 
 
-export class RegisterComponent{
+export class RegisterComponent implements OnInit{
 
     submitted=false;
     
@@ -21,16 +21,21 @@ export class RegisterComponent{
         password: '',
         confirmpassword:'',
     }
+    authError: any;
     constructor(private registerService : Authentication)
     {
         
 
     }
    
-
+    ngOnInit(){
+        this.registerService.eventAuthError$.subscribe( data =>{
+            this.authError = data;
+        })
+    }
     onRegister()
     {
-        console.log(this.register);
+        
         this.registerService.addRegister(this.register);
         
     }

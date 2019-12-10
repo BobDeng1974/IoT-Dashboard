@@ -1,7 +1,7 @@
 export interface Register{
     id?: string,
-    name: string,
+    name?: string,
     email:string,
     password:any,
-    confirmpassword:any,
+    confirmpassword?:any,
 }
