@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { Register } from '../../@core/data/registermodel';
 import { Authentication } from '../../@core/utils/auth.service';
-import { fromValue } from 'long';
+
 
 
 @Component({
@@ -21,16 +21,19 @@ export class RegisterComponent{
         password: '',
         confirmpassword:'',
     }
-    constructor()
+    constructor(private registerService : Authentication)
     {
-        console.log(this.register.name)
+        
 
     }
    
 
-    // onRegister(){
-    //     this.registerService.addRegister(this.register);
-    // }
+    onRegister()
+    {
+        console.log(this.register);
+        this.registerService.addRegister(this.register);
+        
+    }
 
     
 }

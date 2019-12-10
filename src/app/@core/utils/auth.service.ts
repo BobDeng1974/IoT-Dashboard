@@ -10,7 +10,6 @@ import {
 import { Register } from '../data/registermodel'
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { RegisterComponent } from '../../pages/register/register.component';
 import { Router } from '@angular/router';
 
 @Injectable({providedIn: 'root'})
@@ -24,7 +23,7 @@ export class Authentication {
     {
         this.registerCollection = this.afs.collection('register');
         
-        this.register = this.afs.collection('cloud').snapshotChanges().pipe(map(changes =>{
+        this.register = this.afs.collection('register').snapshotChanges().pipe(map(changes =>{
             return changes.map(a => {
                 const data = a.payload.doc.data() as Register
                 data.id = a.payload.doc.id;
@@ -53,6 +52,6 @@ export class Authentication {
 
     insertUserData(userCredential: firebase.auth.UserCredential)
     {
-
+        // return this.db.doc('Register')
     }
 }

@@ -3,8 +3,8 @@
  * Copyright Akveo. All Rights Reserved.
  * Licensed under the MIT License. See License.txt in the project root for license information.
  */
-import { AngularFireModule } from 'angularfire2';
-import { AngularFirestoreModule } from  '@angular/fire/firestore';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule, AngularFirestore } from  '@angular/fire/firestore';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -28,6 +28,8 @@ import {
   IMqttServiceOptions
 } from 'ngx-mqtt';
 import { environment } from '../environments/environment';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
 
 
 export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
@@ -45,6 +47,7 @@ export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
   imports: [
     AngularFireModule.initializeApp(environment.firebase, 'iot dashboard'),
     ReactiveFormsModule,
+    AngularFireAuthModule,
     AngularFirestoreModule,
     BrowserModule,
     FormsModule,
@@ -64,6 +67,7 @@ export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
     }),
     CoreModule.forRoot(),
   ],
+  providers: [AngularFirestore],
   bootstrap: [AppComponent],
 })
 export class AppModule {

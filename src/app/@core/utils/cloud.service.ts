@@ -13,7 +13,7 @@ export class CloudService {
     cloud: Observable<Cloud[]>
     
 
-    constructor(public afs:AngularFirestore,){
+    constructor(public afs:AngularFirestore){
         // this.cloud = this.afs.collection('cloud').valueChanges();
         this.cloudCollection = this.afs.collection('cloud');
 
@@ -33,6 +33,6 @@ export class CloudService {
 
     addServer(cloud: Cloud){
         this.cloudCollection.add(cloud);
-        console.log(cloud.URL);
+        
     }
 }

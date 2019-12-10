@@ -27,8 +27,8 @@ export class WeatherComponent{
         this.weatherData = data;
         // console.log(this.weatherData);
 
-        let temp_max = data['list'].map( data => data.main.temp_max)
-        console.log(temp_max);
+        // let temp_max = data['list'].map( data => data.main.temp_max)
+        // console.log(temp_max);
         })
     }
 

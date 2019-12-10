@@ -13,6 +13,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/register',
     
   },
+  {
+    title: 'Login',
+    icon: 'checkmark-outline',
+    link: '/pages/login'
+  },
   
   {
   title: 'Setting',
