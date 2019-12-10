@@ -11,6 +11,7 @@ import { Register } from '../data/registermodel'
 import { Observable, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { timingSafeEqual } from 'crypto';
 
 @Injectable({providedIn: 'root'})
 
@@ -49,7 +50,7 @@ export class Authentication {
             });
             this.insertUserData(userCredential)
             .then(() =>{
-                this.router.navigate(['/pages/dasboard'])
+                this.router.navigate(['/pages/register'])
             });
 
 
@@ -61,6 +62,19 @@ export class Authentication {
         })
     }
 
+    login( email:string, password:string)
+    {
+        this.afAuth.auth.signInWithEmailAndPassword(email,password)
+        .catch(error => {
+            this.eventAuthError.next(error);
+        })
+        .then(userCredentials => {
+            if(userCredentials){
+                this.router.navigate(['/pages/dasboard'])
+            }
+        })
+    }
+
     insertUserData(userCredential: firebase.auth.UserCredential)
     {
         // return this.db.doc('Register')
@@ -68,5 +82,9 @@ export class Authentication {
             email:this.newUser.email,
             role:'network user'
         })
+    }
+
+    logout() {
+        return this.afAuth.auth.signOut();
     }
 }

@@ -1,5 +1,6 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Register } from '../../@core/data/registermodel';
+import { Authentication } from '../../@core/utils/auth.service';
 
 @Component({
     selector: 'ngx-login',
@@ -10,14 +11,26 @@ import { Register } from '../../@core/data/registermodel';
 
 
 
-export class LoginComponent{
+export class LoginComponent implements OnInit{
 
-    login: Register ={
+    details: Register ={
         email: '',
         password: '',
     }
+    authError:any;
 
-    constructor(){
+    constructor(private auth: Authentication){
         
+    }
+
+    ngOnInit(){
+        this.auth.eventAuthError$.subscribe( data => {
+            this.authError = data;
+            console.log(data)
+        })
+    }
+
+    logincomponent(){
+        this.auth.login(this.details.email, this.details.password);
     }
 }

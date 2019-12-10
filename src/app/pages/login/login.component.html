@@ -3,7 +3,12 @@
         <nb-card>
             <nb-card-header>Login</nb-card-header>
             <nb-card-body>
-                <form class="form-horizontal">
+                <div class="row">
+                    <div class="col-12 alert alert-danger">
+                        {{authError?.message}}
+                    </div>
+                </div>
+                <form class="form-horizontal" (ngSubmit)=logincomponent() #form="ngForm">  
                     <div class="form-group row">
                         <label for="inputEmail" class="label col-sm-3">Email</label>
                         <div class="col-sm-9">
@@ -12,12 +17,21 @@
                             nbInput fullWidth
                             id="inputemail"
                             placeholder="Email"
-                            [(ngModel)]="login.email"
+                            [(ngModel)]="details.email"
                             #email="ngModel"
+                            pattern=".+@.+\..+"
                             required
                             [status]="email.dirty? (email.invalid ? 'danger':'success'):''"
                             [attr.aria-invalid]="email.invalid && email.touched? true:null"
                             />
+                            <ng-container *ngIf="email.invalid && email.touched">
+                                <p class="caption status-danger" *ngIf="email.errors?.required">
+                                    Email is required
+                                </p>
+                                <p class="caption status-danger" *ngIf="email.errors?.pattern">
+                                    Email must be real
+                                </p>
+                            </ng-container>
                             
                         </div>
                     </div>
@@ -31,19 +45,20 @@
                             nbInput fullWidth
                             id="inputpassword"
                             placeholder="Password"
-                            [(ngModel)]="login.password"
+                            [(ngModel)]="details.password"
                             #password="ngModel"
                             required
                             [status]="password.dirty? (password.invalid ? 'danger':'success'):''"
                             [attr.aria-invalid]="password.invalid && password.touched? true:null"
                             />
-                            
+                            <ng-container *ngIf="password.invalid && password.touched">
+                                <p class="caption status-danger" *ngIf="password.errors?.required">
+                                    Password is Required !
+                                </p>
+                            </ng-container>
                         </div>
-                        <div class="form-control-group">
-                            <span class="label-with-link">
-                                <a routerLink="../request-password" class="forgot-password caption-2">Forgot Password</a>
-                            </span>
-                        </div>
+                      
+                        
                        
 
                     </div>
@@ -51,6 +66,7 @@
                     <button nbButton
                     fullWidth
                     status="primary"
+                    [disabled]="false || !form.valid"
                     >
                     Login
                     </button>
