@@ -3,15 +3,14 @@ import { auth } from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { 
     AngularFirestore,
-    AngularFirestoreDocument,
-    AngularFirestoreCollection
+    AngularFirestoreCollection,
        }
  from '@angular/fire/firestore';
 import { Register } from '../data/registermodel'
 import { Observable, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { timingSafeEqual } from 'crypto';
+
 
 @Injectable({providedIn: 'root'})
 
@@ -80,7 +79,7 @@ export class Authentication {
         // return this.db.doc('Register')
         return this.afs.doc(`Register/${userCredential.user.uid}`).set({
             email:this.newUser.email,
-            role:'network user'
+            name: this.newUser.name,
         })
     }
 

@@ -1,15 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CloudService } from '../../../@core/utils/cloud.service';
 import { Cloud } from '../../../@core/data/cloudmodel';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { IMqttServiceOptions, MqttService } from 'ngx-mqtt';
+
+
 
 @Component({
     selector: 'ngx-cloud',
     templateUrl: './cloud.component.html',
     styleUrls:['./cloud.component.scss']
 })
-export class CloudComponent {
- //    cloud: Cloud[];
+export class CloudComponent implements OnInit{
+
+    private _mqttClient : any;
+
    cloud: Cloud = {
        URL: '',
        username: '',
@@ -20,19 +25,17 @@ export class CloudComponent {
    errors:string[];
 
     form: FormGroup;
-    constructor(private cloudService: CloudService, private formBuilder: FormBuilder){
-    //   this.createForm();
+    constructor(private cloudService: CloudService, private formBuilder: FormBuilder, private _mqttService: MqttService){
+        
     }
 
-    // createForm(){
-    //     this.form = this.formBuilder.group({
-    //         URL:['', Validators.required],
-    //         username:['', Validators.required],
-    //         port:['', Validators.required],
-    //         password: ['', Validators.required],
-    //     })
-    // }
+    ngOnInit(){
+        
+    }
 
+
+    
+   
     
 
     // ngOnInit(){
@@ -49,7 +52,9 @@ export class CloudComponent {
     }
 
     onConnect(){
+        this._mqttClient= this._mqttService.connect(this.cloud);
         this.cloudService.addServer(this.cloud);
+        
         
     }
 
