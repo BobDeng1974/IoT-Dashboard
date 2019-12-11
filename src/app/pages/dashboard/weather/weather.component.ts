@@ -18,14 +18,17 @@ export class WeatherComponent{
     public weatherData: any;
     
     constructor(private weatherservice: WeatherService){
-        
+        this.weatherservice.getWeather(this.location.city, this.location.code).subscribe((data) => {
+            
+            
+        })
     }
 
    
     ngOnInit(){
         this.weatherservice.getWeather(this.location.city,this.location.code).subscribe((data)=>{
         this.weatherData = data;
-        // console.log(this.weatherData);
+        console.log(this.weatherData.list[0].main.temp_max);
 
         // let temp_max = data['list'].map( data => data.main.temp_max)
         // console.log(temp_max);

@@ -17,9 +17,25 @@ export class EchartsLineComponent implements AfterViewInit, OnDestroy {
   public subs: Subscription;
   public message: string;
   temperature:number;
+  // temp_max: any[];
+  weatherData: any;
+  temp_max: any;
+  
 
 
   constructor(private theme: NbThemeService, private _mqttService: MqttService, private _weatherService: WeatherService) {
+    this._weatherService.getWeather('Bayan Baru', 'MY').subscribe(data => {
+      this.weatherData = data;
+      this.temp_max = [1,2,3]
+      // this.temp_max=[this.weatherData.list[0].main.temp_max];
+       console.log(this.temp_max);
+      
+
+      
+      // this.temp_max = data['list'].map( data => data.main.temp_max )
+      // console.log(this.temp_max);
+    })
+  
   }
 
   ngAfterViewInit() {
@@ -29,12 +45,9 @@ export class EchartsLineComponent implements AfterViewInit, OnDestroy {
       const colors: any = config.variables;
       const echarts: any = config.variables.echarts;
 
-      this._weatherService.getWeather('Bayan Baru', 'MY').subscribe(data => {
-        
+      
 
-        let temp_max = data['list'].map( data => data.main.temp_max)
-        console.log(temp_max);
-      })
+    
 
       // this.subs = this._mqttService.observe('temperature').subscribe((message:IMqttMessage) => {
       //   this.message = message.payload.toString();
@@ -106,7 +119,7 @@ export class EchartsLineComponent implements AfterViewInit, OnDestroy {
           {
             name: 'Line 1',
             type: 'line',
-            data: [5, 3, 9, 27, 81, 247, 741, 2223, 6669],
+            data: this.temp_max,
           },
           {
             name: 'Line 2',
