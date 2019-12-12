@@ -19,22 +19,13 @@ export class EchartsLineComponent implements AfterViewInit, OnDestroy {
   temperature:number;
   // temp_max: any[];
   weatherData: any;
-  temp_max: any;
+  temp_max: number[];
+  test:number[]=[1,2,3,4,5];
   
 
 
   constructor(private theme: NbThemeService, private _mqttService: MqttService, private _weatherService: WeatherService) {
-    this._weatherService.getWeather('Bayan Baru', 'MY').subscribe(data => {
-      this.weatherData = data;
-      this.temp_max = [1,2,3]
-      // this.temp_max=[this.weatherData.list[0].main.temp_max];
-       console.log(this.temp_max);
-      
-
-      
-      // this.temp_max = data['list'].map( data => data.main.temp_max )
-      // console.log(this.temp_max);
-    })
+    
   
   }
 
@@ -44,6 +35,19 @@ export class EchartsLineComponent implements AfterViewInit, OnDestroy {
       
       const colors: any = config.variables;
       const echarts: any = config.variables.echarts;
+
+      this._weatherService.getWeather('Bayan Baru', 'MY').subscribe(data => {
+        this.weatherData = data;
+        let temp_max = [10,21,3]
+        // this.temp_max=[this.weatherData.list[0].main.temp_max];
+         console.log(this.temp_max);
+         console.log(this.test);
+        
+  
+        
+        // this.temp_max = data['list'].map( data => data.main.temp_max )
+        // console.log(this.temp_max);
+      })
 
       
 
@@ -124,7 +128,7 @@ export class EchartsLineComponent implements AfterViewInit, OnDestroy {
           {
             name: 'Line 2',
             type: 'line',
-            data: [1, 2, 4, 8, 16, 32, 64, 128, 256],
+            data: [1, 2, 4, 8, 16, 32, 64, 128, 256, 222, 3333, 444],
           },
           {
             name: 'Line 3',
