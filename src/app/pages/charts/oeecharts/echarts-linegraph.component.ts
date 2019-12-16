@@ -3,7 +3,7 @@ import { NbThemeService } from '@nebular/theme';
 
 @Component({
 selector: 'ngx-linecharts',
-template:`<div echarts [options]="options" class="echart></div>
+template:`<div echarts [options]="options" class="echart"></div>
 `
 
 })
