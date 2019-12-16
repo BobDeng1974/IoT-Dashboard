@@ -6,9 +6,13 @@ import { ChartsRoutingModule, routedComponents } from './charts-routing.module';
 import { EchartsLineComponent } from './oeecharts/echarts-line.component';
 import { ChartModule } from 'angular2-chartjs';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { LineComponent } from './oeecharts/echarts-linegraph.component';
 
 const component = [
     EchartsLineComponent,
+    LineComponent,
+    
+    
 ];
 
 @NgModule({
