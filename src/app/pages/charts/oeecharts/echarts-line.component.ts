@@ -20,7 +20,7 @@ export class EchartsLineComponent implements AfterViewInit, OnDestroy {
   // temp_max: any[];
   weatherData: any;
   temp_max: number[];
-  test:number[]=[1,2,3,4,5];
+  
   
 
 
@@ -38,10 +38,10 @@ export class EchartsLineComponent implements AfterViewInit, OnDestroy {
 
       this._weatherService.getWeather('Bayan Baru', 'MY').subscribe(data => {
         this.weatherData = data;
-        let temp_max = [10,21,3]
-        // this.temp_max=[this.weatherData.list[0].main.temp_max];
-         console.log(this.temp_max);
-         console.log(this.test);
+        // let temp_max = [10,21,3]
+        // // this.temp_max=[this.weatherData.list[0].main.temp_max];
+        //  console.log(this.temp_max);
+        //  console.log(this.test);
         
   
         
