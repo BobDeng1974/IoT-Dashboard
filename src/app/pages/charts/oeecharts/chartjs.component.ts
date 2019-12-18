@@ -1,5 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { NbThemeService, NbColorHelper } from '@nebular/theme';
+import { WeatherService } from '../../../@core/utils/weather.service';
 
 @Component({
   selector: 'ngx-chartjs-line',
@@ -11,13 +12,17 @@ export class ChartjsLineComponent implements OnDestroy {
   data: any;
   options: any;
   themeSubscription: any;
+  weatherData: any;
+  temp_max: number[];
+  weather: any[];
 
-  constructor(private theme: NbThemeService) {
+  constructor(private theme: NbThemeService, private _weatherService: WeatherService) {
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
 
       const colors: any = config.variables;
       const chartjs: any = config.variables.chartjs;
 
+      
       this.data = {
         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
         datasets: [{
@@ -25,17 +30,18 @@ export class ChartjsLineComponent implements OnDestroy {
           label: 'Series A',
           backgroundColor: NbColorHelper.hexToRgbA(colors.primary, 0.3),
           borderColor: colors.primary,
-        }, {
-          data: [28, 48, 40, 19, 86, 27, 90],
-          label: 'Series B',
-          backgroundColor: NbColorHelper.hexToRgbA(colors.danger, 0.3),
-          borderColor: colors.danger,
-        }, {
-          data: [18, 48, 77, 9, 100, 27, 40],
-          label: 'Series C',
-          backgroundColor: NbColorHelper.hexToRgbA(colors.info, 0.3),
-          borderColor: colors.info,
-        },
+        }, 
+        // {
+        //   data: [28, 48, 40, 19, 86, 27, 90],
+        //   label: 'Series B',
+        //   backgroundColor: NbColorHelper.hexToRgbA(colors.danger, 0.3),
+        //   borderColor: colors.danger,
+        // }, {
+        //   data: [18, 48, 77, 9, 100, 27, 40],
+        //   label: 'Series C',
+        //   backgroundColor: NbColorHelper.hexToRgbA(colors.info, 0.3),
+        //   borderColor: colors.info,
+        // },
         ],
       };
 

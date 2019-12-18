@@ -17,9 +17,10 @@ export class EchartsLineComponent implements AfterViewInit, OnDestroy {
   public subs: Subscription;
   public message: string;
   temperature:number;
-  // temp_max: any[];
+  
   weatherData: any;
-  temp_max: number[];
+  temp_max: any[];
+  test: number [] = [1,2,3,4];
   
   
 
@@ -37,28 +38,19 @@ export class EchartsLineComponent implements AfterViewInit, OnDestroy {
       const echarts: any = config.variables.echarts;
 
       this._weatherService.getWeather('Bayan Baru', 'MY').subscribe(data => {
-        this.weatherData = data;
+        
+        // this.weatherData = data;
         // let temp_max = [10,21,3]
-        // // this.temp_max=[this.weatherData.list[0].main.temp_max];
-        //  console.log(this.temp_max);
-        //  console.log(this.test);
+        // this.temp_max=[this.weatherData.list[0].main.temp_max,this.weatherData.list[1].main.temp_max];
+        // console.log(this.temp_max);
+        
+        //   console.log(this.test);
         
   
         
         // this.temp_max = data['list'].map( data => data.main.temp_max )
         // console.log(this.temp_max);
       })
-
-      
-
-    
-
-      // this.subs = this._mqttService.observe('temperature').subscribe((message:IMqttMessage) => {
-      //   this.message = message.payload.toString();
-      //   console.log('Temperature :' + this.message);
-      //   this.temperature = Number(this.message);
-      //   console.log(this.temperature);
-      // });
 
       this.options = {
         backgroundColor: echarts.bg,
@@ -123,7 +115,8 @@ export class EchartsLineComponent implements AfterViewInit, OnDestroy {
           {
             name: 'Line 1',
             type: 'line',
-            data: this.temp_max,
+            // data: this.temp_max,
+            data: [12,34.3,55,67,421],
           },
           {
             name: 'Line 2',
