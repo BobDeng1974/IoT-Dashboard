@@ -16,7 +16,7 @@ import { Subscription } from 'rxjs';
 export class TestChartjs {
 
 
-    chart= [];
+    chart= {};
     private subs : Subscription;
     public message : string;
     //temperature: number;

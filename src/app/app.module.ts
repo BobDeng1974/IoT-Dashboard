@@ -29,7 +29,7 @@ import {
 } from 'ngx-mqtt';
 import { environment } from '../environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-
+import { HighchartsChartModule } from 'highcharts-angular';
 
 
 export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
@@ -49,6 +49,7 @@ export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
     ReactiveFormsModule,
     AngularFireAuthModule,
     AngularFirestoreModule,
+    HighchartsChartModule,
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
