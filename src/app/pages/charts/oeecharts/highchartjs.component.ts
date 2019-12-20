@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import * as Highcharts from 'highcharts';
-import { MqttService } from 'ngx-mqtt';
+import { MqttService, IMqttMessage } from 'ngx-mqtt';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -18,10 +18,13 @@ export class HighChartComponent implements OnInit {
     private subs: Subscription;
     public message : number;
 
-    Highcharts = Highcharts;
+    Highcharts: typeof Highcharts = Highcharts;
 
     constructor(private _mqttService:MqttService){
-
+        this.subs = this._mqttService.observe('temperature').subscribe((message: IMqttMessage) => {
+            this.message = Number(message.payload.toString());
+           // this.Highcharts.ref.series[0](this.message, true);
+        })
     }
     
 
@@ -31,7 +34,7 @@ export class HighChartComponent implements OnInit {
         this.chartOptions = {
             chart: {
                 type: 'spline',
-                animation: Highcharts.svg, // don't animate in old IE
+                //animation: Highcharts.svg, // don't animate in old IE
                 marginRight: 10,
                 events: {
                     load: function () {
