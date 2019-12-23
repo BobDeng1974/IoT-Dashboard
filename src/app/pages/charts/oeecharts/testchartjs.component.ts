@@ -34,7 +34,7 @@ export class TestChartjs {
         let temperature = []
         temperature.push(this.message);
         
-        console.log(temperature);
+        // console.log(temperature);
 
         this.chart = new Chart('canvas', {
           type: 'line',

@@ -21,16 +21,18 @@ export class HighChartComponent implements OnInit {
     Highcharts: typeof Highcharts = Highcharts;
 
     constructor(private _mqttService:MqttService){
-        this.subs = this._mqttService.observe('temperature').subscribe((message: IMqttMessage) => {
-            this.message = Number(message.payload.toString());
-           // this.Highcharts.ref.series[0](this.message, true);
-        })
+       
     }
     
 
  
 
     ngOnInit(){
+         this.subs = this._mqttService.observe('temperature').subscribe((message: IMqttMessage) => {
+            this.message = Number(message.payload.toString());
+           //this.Highcharts.ref.series[0](this.message, true);
+           
+        
         this.chartOptions = {
             chart: {
                 type: 'spline',
@@ -111,7 +113,8 @@ export class HighChartComponent implements OnInit {
                     for (i = -19; i <= 0; i += 1) {
                         data.push({
                             x: time + i * 1000,
-                            y: Math.random()
+                            y: this.message
+                           // y: Math.random()
                         });
                     }
                     return data;
@@ -119,6 +122,7 @@ export class HighChartComponent implements OnInit {
             }]
             
         }
+    })
     }
    
     
