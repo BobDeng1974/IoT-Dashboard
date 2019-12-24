@@ -32,7 +32,7 @@ export class HighChartComponent implements OnInit {
             this.message = Number(message.payload.toString());
            //this.Highcharts.ref.series[0](this.message, true);
            
-        
+        })
         this.chartOptions = {
             chart: {
                 type: 'spline',
@@ -60,18 +60,7 @@ export class HighChartComponent implements OnInit {
                 text: 'Live Data'
             },
         
-            accessibility: {
-                announceNewData: {
-                    enabled: true,
-                    minAnnounceInterval: 15000,
-                    announcementFormatter: function (allSeries, newSeries, newPoint) {
-                        if (newPoint) {
-                            return 'New point added. Value: ' + newPoint.y;
-                        }
-                        return false;
-                    }
-                }
-            },
+            
         
             xAxis: {
                 type: 'datetime',
@@ -113,7 +102,7 @@ export class HighChartComponent implements OnInit {
                     for (i = -19; i <= 0; i += 1) {
                         data.push({
                             x: time + i * 1000,
-                            y: this.message
+                            y: Math.random()
                            // y: Math.random()
                         });
                     }
@@ -122,7 +111,6 @@ export class HighChartComponent implements OnInit {
             }]
             
         }
-    })
     }
    
     
