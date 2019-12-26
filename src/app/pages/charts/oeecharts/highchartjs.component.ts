@@ -23,15 +23,32 @@ export class HighChartComponent implements OnInit {
     Highcharts: typeof Highcharts = Highcharts;
 
     constructor(private _mqttService:MqttService){
+       
+        
+    }
+
+    addData(){
         this.subs = this._mqttService.observe('temperature').subscribe((message: IMqttMessage) => {
-            this.message = Number(message.payload.toString());
+           this.message = Number(message.payload.toString());
            
+           console.log(this.message);
            //this.Highcharts.ref.series[0](this.message, true);
            
         })
+
+    }
+
+    
+    ngOnInit(){
+
+        function testData(){
+            return 1;
+        }
+
         this.chartOptions = {
             chart: {
                 type: 'spline',
+                renderTo: 'container',
                 //animation: Highcharts.svg, // don't animate in old IE
                 marginRight: 10,
                 events: {
@@ -42,6 +59,7 @@ export class HighChartComponent implements OnInit {
                        
                         setInterval(function () {
                             var x = (new Date()).getTime(), // current time
+                                // y = testData();
                                 y = Math.random();
                             series.addPoint([x, y], true, true);
                         }, 1000);
@@ -68,11 +86,7 @@ export class HighChartComponent implements OnInit {
                 title: {
                     text: 'Value'
                 },
-                // plotLines: [{
-                //     value: 0,
-                //     width: 1,
-                //     color: '#808080'
-                // }]
+               
             },
         
             tooltip: {
@@ -108,13 +122,6 @@ export class HighChartComponent implements OnInit {
             }]
             
         }
-        
-    }
-    
-
- 
-
-    ngOnInit(){
        
         
     }
