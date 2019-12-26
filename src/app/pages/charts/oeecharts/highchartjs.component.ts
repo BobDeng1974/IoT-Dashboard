@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import * as Highcharts from 'highcharts';
 import { MqttService, IMqttMessage } from 'ngx-mqtt';
 import { Subscription } from 'rxjs';
+import { chart } from 'highcharts';
 
 @Component({
  selector: 'ngx-highchart',
@@ -17,19 +18,14 @@ export class HighChartComponent implements OnInit {
     chartOptions : {}
     private subs: Subscription;
     public message : number;
+    temp: number;
 
     Highcharts: typeof Highcharts = Highcharts;
 
     constructor(private _mqttService:MqttService){
-       
-    }
-    
-
- 
-
-    ngOnInit(){
-         this.subs = this._mqttService.observe('temperature').subscribe((message: IMqttMessage) => {
+        this.subs = this._mqttService.observe('temperature').subscribe((message: IMqttMessage) => {
             this.message = Number(message.payload.toString());
+           
            //this.Highcharts.ref.series[0](this.message, true);
            
         })
@@ -40,9 +36,10 @@ export class HighChartComponent implements OnInit {
                 marginRight: 10,
                 events: {
                     load: function () {
-        
+                        
                         // set up the updating of the chart each second
                         var series = this.series[0];
+                       
                         setInterval(function () {
                             var x = (new Date()).getTime(), // current time
                                 y = Math.random();
@@ -71,11 +68,11 @@ export class HighChartComponent implements OnInit {
                 title: {
                     text: 'Value'
                 },
-                plotLines: [{
-                    value: 0,
-                    width: 1,
-                    color: '#808080'
-                }]
+                // plotLines: [{
+                //     value: 0,
+                //     width: 1,
+                //     color: '#808080'
+                // }]
             },
         
             tooltip: {
@@ -102,8 +99,8 @@ export class HighChartComponent implements OnInit {
                     for (i = -19; i <= 0; i += 1) {
                         data.push({
                             x: time + i * 1000,
-                            y: Math.random()
-                           // y: Math.random()
+                            y: null
+                            // y: Math.random()
                         });
                     }
                     return data;
@@ -111,6 +108,15 @@ export class HighChartComponent implements OnInit {
             }]
             
         }
+        
+    }
+    
+
+ 
+
+    ngOnInit(){
+       
+        
     }
    
     
