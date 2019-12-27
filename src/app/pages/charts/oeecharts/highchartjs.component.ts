@@ -1,8 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import * as Highcharts from 'highcharts';
 import { MqttService, IMqttMessage } from 'ngx-mqtt';
-import { Subscription } from 'rxjs';
-import { chart } from 'highcharts';
+import { Subscription, Observable } from 'rxjs';
+import { chart, Options } from 'highcharts';
+import { map } from 'rxjs/internal/operators/map';
+
 
 @Component({
  selector: 'ngx-highchart',
@@ -20,31 +22,53 @@ export class HighChartComponent implements OnInit {
     public message : number;
     temp: number;
 
-    Highcharts: typeof Highcharts = Highcharts;
+    Highcharts = Highcharts;
 
     constructor(private _mqttService:MqttService){
-       
-        
+        this.testData().then((data)=>console.log(data))      
     }
 
-    addData(){
-        this.subs = this._mqttService.observe('temperature').subscribe((message: IMqttMessage) => {
-           this.message = Number(message.payload.toString());
-           
-           console.log(this.message);
-           //this.Highcharts.ref.series[0](this.message, true);
-           
+     //    this.subs = this._mqttService.observe('temperatuer'). subscribe((message: IMqttMessage) => {
+        //        this.message = Number(message.payload.toString());
+        //    })
+
+   testData() {
+
+        return new Promise((resolve)=> {
+               this.subs = this._mqttService.observe('temperature'). subscribe((message: IMqttMessage) => {
+               this.message = Number(message.payload.toString());
+               resolve(this.message);
+           })
+
         })
+   }
+    // testData(): Observable<string> {
+    //     return this._mqttService.observe('temperature').pipe(
+    //         map((message: IMqttMessage) => { 
+    //             return message.payload.toString() 
+    //         })
+    //     )
+    // }
 
-    }
 
-    
+     // async function addData(){
+        //     this.subs = this._mqttService.observe('temperature').subscribe((message: IMqttMessage) => {
+        //         this.message = Number(message.payload.toString());
+                
+        //         console.log(this.message);
+        //         //this.Highcharts.ref.series[0](this.message, true);
+                
+        //      })
+        // }
+
+   
     ngOnInit(){
-
+        
+        
         function testData(){
             return 1;
         }
-
+        
         this.chartOptions = {
             chart: {
                 type: 'spline',
@@ -56,6 +80,8 @@ export class HighChartComponent implements OnInit {
                         
                         // set up the updating of the chart each second
                         var series = this.series[0];
+
+                       
                        
                         setInterval(function () {
                             var x = (new Date()).getTime(), // current time
