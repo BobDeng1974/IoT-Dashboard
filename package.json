@@ -45,6 +45,7 @@
     "@nebular/security": "4.1.2",
     "@nebular/theme": "4.1.2",
     "@swimlane/ngx-charts": "^12.1.0",
+    "angular-highcharts": "^8.0.3",
     "angular2-chartjs": "^0.5.1",
     "angularfire2": "^5.2.3",
     "bootstrap": "4.3.1",

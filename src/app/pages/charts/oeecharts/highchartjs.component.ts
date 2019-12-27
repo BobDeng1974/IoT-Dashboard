@@ -63,11 +63,12 @@ export class HighChartComponent implements OnInit {
 
    
     ngOnInit(){
+        this.testData();
         
         
-        function testData(){
-            return 1;
-        }
+        // function testData(){
+        //     return 1;
+        // }
         
         this.chartOptions = {
             chart: {
@@ -86,9 +87,9 @@ export class HighChartComponent implements OnInit {
                         setInterval(function () {
                             var x = (new Date()).getTime(), // current time
                                 // y = testData();
-                                y = Math.random();
+                                y =Math.random();
                             series.addPoint([x, y], true, true);
-                        }, 1000);
+                        }, 1000);   
                     }
                 }
             },

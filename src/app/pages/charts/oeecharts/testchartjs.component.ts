@@ -1,34 +1,40 @@
 import { Component, OnInit } from '@angular/core';
-import { Options, chart } from 'highcharts';
-import * as Highcharts from 'highcharts';
-
+import { Options } from 'highcharts';
+import { Chart } from 'angular-highcharts';
 
 
 @Component({
   selector: 'ngx-testchart',
   template:`<div>it works</div>`
 })
-export class TestChartjs implements OnInit {
+export class TestChartjs implements OnInit  {
 
-    chart: Chart;
+    constructor(){
+
+    }
+
+    chart:Chart;
     options: Options;
 
-  constructor() { }
+    ngOnInit(){
 
-  ngOnInit() { 
-    this.options = {
-      chart: {
-        type: 'line'
-      },
-      title: {
-        text: 'Linechart'
-      },
-      credits: {
-        enabled: false
-      },
+    }
+
+    addPoint(){
+      if(this.chart){
+        this.chart.addPoint(Math.floor(Math.random()* 10));
+
+      } else{
+        alert('init chart, first!');
+      }
+    }
+
+    init(){
      
-    };
 
-  }
+
+
+    }
+   
 
 }
