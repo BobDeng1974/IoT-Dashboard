@@ -25,30 +25,30 @@ export class HighChartComponent implements OnInit {
     Highcharts = Highcharts;
 
     constructor(private _mqttService:MqttService){
-        this.testData().then((data)=>console.log(data))      
+        this.testData().subscribe((data)=>console.log(data))      
     }
 
      //    this.subs = this._mqttService.observe('temperatuer'). subscribe((message: IMqttMessage) => {
         //        this.message = Number(message.payload.toString());
         //    })
 
-   testData() {
+//    testData() {
 
-        return new Promise((resolve)=> {
-               this.subs = this._mqttService.observe('temperature'). subscribe((message: IMqttMessage) => {
-               this.message = Number(message.payload.toString());
-               resolve(this.message);
-           })
+//         return new Promise((resolve)=> {
+//                this.subs = this._mqttService.observe('temperature'). subscribe((message: IMqttMessage) => {
+//                this.message = Number(message.payload.toString());
+//                resolve(this.message);
+//            })
 
-        })
-   }
-    // testData(): Observable<string> {
-    //     return this._mqttService.observe('temperature').pipe(
-    //         map((message: IMqttMessage) => { 
-    //             return message.payload.toString() 
-    //         })
-    //     )
-    // }
+//         })
+//    }
+    testData(): Observable<string> {
+        return this._mqttService.observe('temperature').pipe(
+            map((message: IMqttMessage) => { 
+                return message.payload.toString() 
+            })
+        )
+    }
 
 
      // async function addData(){
@@ -63,7 +63,7 @@ export class HighChartComponent implements OnInit {
 
    
     ngOnInit(){
-        this.testData();
+        
         
         
         // function testData(){
@@ -87,7 +87,7 @@ export class HighChartComponent implements OnInit {
                         setInterval(function () {
                             var x = (new Date()).getTime(), // current time
                                 // y = testData();
-                                y =Math.random();
+                                y = Math.random();
                             series.addPoint([x, y], true, true);
                         }, 1000);   
                     }

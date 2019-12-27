@@ -30,8 +30,7 @@ export class TestChartjs implements OnInit  {
     }
 
     init(){
-     
-
+      
 
 
     }
